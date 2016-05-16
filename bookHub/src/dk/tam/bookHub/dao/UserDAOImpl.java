@@ -7,7 +7,7 @@ package dk.tam.bookHub.dao;
  * @author Martyna
  *
  */
-public class UserDAOImpl extends DbConnectionDAO {
+public class UserDAOImpl extends DbConnectionDAO implements UserDAO {
 	
 	
 

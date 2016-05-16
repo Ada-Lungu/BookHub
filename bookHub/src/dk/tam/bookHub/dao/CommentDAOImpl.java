@@ -16,7 +16,7 @@ import dk.tam.bookHub.model.Comments;
  * @author Martyna
  *
  */
-public class CommentDAOImpl extends DbConnectionDAO {
+public class CommentDAOImpl extends DbConnectionDAO implements CommentDAO {
 public List<Comments> displayAllComments() {
 		
 		List<Comments> commentsList = new ArrayList<Comments>();

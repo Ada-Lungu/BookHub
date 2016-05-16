@@ -17,7 +17,7 @@ import dk.tam.bookHub.model.Reviews;
  * @author Martyna
  *
  */
-public class ReviewDAOImpl extends DbConnectionDAO{
+public class ReviewDAOImpl extends DbConnectionDAO implements ReviewDAO{
 	
 	
 	public List<Reviews> displayAllReviews() {

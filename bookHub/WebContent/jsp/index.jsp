@@ -1,8 +1,9 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="sun.util.calendar.LocalGregorianCalendar.Date"%>
+<%@page import="java.util.Date"%>
 <%@page import="javax.print.attribute.standard.DateTimeAtCompleted"%>
 <%@page import="dk.tam.bookHub.model.Comments"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,7 +25,7 @@
 
 <h1>Hello here</h1>
 
-<h1>${Comments.getContent(); }</h1>
+
 
 <table id="grid">
   <thead>
@@ -54,13 +55,11 @@
         	Date commentDate = comment.getPosted_date();
         	
         	
-        	
-         
-         
+        
         
   %>
    <tr>
-    <th scope="row" id="r100"><%=comment.getNickname()   %></th>
+    <th ><%= comment.getNickname()   %></th>
 
    </tr>
 
