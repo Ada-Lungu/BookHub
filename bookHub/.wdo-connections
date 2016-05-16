@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections:connections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connections="http://www.ibm.com/websphere/wdo/connections">
+  <connection id="book_hub">
+    <development xsi:type="connections:rsc-live-connection" id="book_hub_dev" name="book_hub"/>
+    <runtime xsi:type="connections:driver-manager-connection" auto-deploy="true" class-location="D:\Eclipse\mysql-connector-java-5.1.38\mysql-connector-java-5.1.38-bin.jar" id="book_hub_runtime" class-name="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/book_hub" userid="root"/>
+  </connection>
+</connections:connections>
