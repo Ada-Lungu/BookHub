@@ -12,5 +12,5 @@ import dk.tam.bookHub.model.Comments;
  *
  */
 public interface CommentDAO {
-	public List<Comments> displayAllComments();
+	public List<Comments> getAllComments();
 }

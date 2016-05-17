@@ -3,9 +3,10 @@
  */
 package dk.tam.bookHub.model;
 
-import java.sql.Blob;
 
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.sql.Blob;
+import java.util.Date;
+
 
 /**
  * @author Martyna

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class DbConnectionDAO {
 	
 	private static final String DB_USERNAME = "root";
-	 private static final String DB_PASSWORD = "Malina33";
+	private static final String DB_PASSWORD = "mildautas";
 	
 	 static {
 	  try {
@@ -33,7 +33,7 @@ public class DbConnectionDAO {
 	 }
 	 
 	 protected Connection getConnection() throws SQLException {
-	  return DriverManager.getConnection("jdbc:mysql://localhost:3306/book_hub?autoReconnect=true&useSSL=false",
+	  return DriverManager.getConnection("jdbc:mysql://localhost:3306/book_hub",
 	    DB_USERNAME, DB_PASSWORD);
 	 }
 	/**

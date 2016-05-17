@@ -3,9 +3,7 @@
  */
 package dk.tam.bookHub.model;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text;
-
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
 
 /**
  * @author Martyna
@@ -14,7 +12,7 @@ import sun.util.calendar.LocalGregorianCalendar.Date;
 public class Comments {
 	private Long id;
 	private Long review_id;
-	private java.util.Date posted_date;
+	private Date posted_date;
 	private String content;
 	private String nickname;
 

@@ -1,5 +1,6 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 <%@page import="javax.print.attribute.standard.DateTimeAtCompleted"%>
 <%@page import="dk.tam.bookHub.model.Comments"%>
@@ -22,10 +23,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="header.jsp"></jsp:include> 
 <h1>Hello here</h1>
-
-
 
 <table id="grid">
   <thead>
@@ -39,13 +38,12 @@
 
   <tbody>
    <%
-   
-   
-   		List<Comments> comments = (List<Comments>)request.getAttribute("commentsList");
-        //List<Comments> comments = (List<Comments>)request.getAttribute("commentsList");
+   		//ServletContext sc = request.getServletContext();
+     		//sc.getAttribute("commentList");
+   		List<Comments> comments = (List<Comments>)application.getAttribute("commentList");
+   		if(comments == null){ %><h1>No comments</h1><%}else{
+        //List<Comments> comments = (List<Comments>)request.getAttribute("commentList");
         Iterator<Comments> iterator = comments.iterator();
-  
-
 
         while (iterator.hasNext()) {
         	Comments comment = (Comments)iterator.next();
@@ -64,24 +62,13 @@
    </tr>
 
    <%
-          }
+          }}
         
  
   %>
   </tbody>
 
- </table>
-
-
-
-
-
-
-
-
-
-
-
+ </table> 
 
 
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -89,12 +76,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-      
-
-
-
-
-
 
 </body>
 </html>
