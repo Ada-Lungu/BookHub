@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dk.tam.bookHub.model.Comments;
 import dk.tam.bookHub.model.Reviews;
 
 /**
@@ -20,7 +19,7 @@ import dk.tam.bookHub.model.Reviews;
 public class ReviewDAOImpl extends DbConnectionDAO implements ReviewDAO{
 	
 	
-	public List<Reviews> displayAllReviews() {
+	public List<Reviews> getAllReviews() {
 		
 		
 		List<Reviews> reviewList = new ArrayList<Reviews>();
@@ -36,18 +35,14 @@ public class ReviewDAOImpl extends DbConnectionDAO implements ReviewDAO{
 		   while (resultSet.next()) {
 			   Reviews reviews = new Reviews();
 			   reviews.setId(resultSet.getLong("id"));
+			   reviews.setReview_title(resultSet.getString("review_title"));
+			   reviews.setBook_title(resultSet.getString("book_title"));
 			   reviews.setBook_author(resultSet.getString("book_author"));
-			   
-//			   Comments comments = new Comments();
-//			   comments.setId(resultSet.getLong("id"));
-//			   comments.setNickname(resultSet.getString("nickname"));
-//			   comments.setPosted_date(resultSet.getDate("posted_date"));
-//			   comments.setReview_id(resultSet.getLong("review_id"));
-//			   comments.setContent(resultSet.getString("content"));
-//			   
-//			   commentsList.add(comments);
-
-		    
+			   reviews.setBook_publisher(resultSet.getString("book_publisher"));
+			   reviews.setBook_picture(resultSet.getBlob("book_picture"));
+			   reviews.setReview_content(resultSet.getString("review_content"));
+			   reviews.setReview_date(resultSet.getTimestamp("review_date"));
+			   reviewList.add(reviews);		    
 		   }
 		  } catch (SQLException ex) {
 		   ex.printStackTrace();

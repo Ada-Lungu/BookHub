@@ -35,7 +35,7 @@ public class CommentDAOImpl extends DbConnectionDAO implements CommentDAO {
 			   Comments comments = new Comments();
 			   comments.setId(resultSet.getLong("id"));
 			   comments.setNickname(resultSet.getString("nickname"));
-			   comments.setPosted_date(resultSet.getDate("posted_date"));
+			   comments.setPosted_date(resultSet.getTimestamp("posted_date"));
 			   comments.setReview_id(resultSet.getLong("review_id"));
 			   comments.setContent(resultSet.getString("content"));
 			   commentsList.add(comments);

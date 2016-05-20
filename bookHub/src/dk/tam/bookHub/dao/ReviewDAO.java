@@ -12,5 +12,5 @@ import dk.tam.bookHub.model.Reviews;
  *
  */
 public interface ReviewDAO {
-		public List<Reviews> displayAllReviews();
+		public List<Reviews> getAllReviews();
 }

@@ -1,61 +1,46 @@
+<%@page import="dk.tam.bookHub.model.Reviews"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
 <%@page import="dk.tam.bookHub.model.Comments"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
 <body>
 <jsp:include page="header.jsp"></jsp:include> 
 
 <h1>INDEX page</h1>
-<table id="grid">
+<h1>Reviews</h1>
+ <table id="reviews">
   <thead>
    <tr>
-    <th id="th-title">Book Title</th>
-    <th id="th-author">Author</th>
-    <th id="th-delete">Delete</th>
+    <th>Review Title</th>
+    <th>Book title</th>
+    <th>Book author</th>
+    <th>Book publisher</th>
+    <th>Book picture</th>
+    <th>Review content</th>
+    <th>Review date</th>
+    
    </tr>
   </thead>
-
-
   <tbody>
    <%
-   		//ServletContext sc = request.getServletContext();
-     		//sc.getAttribute("commentList");
-   		List<Comments> comments = (List<Comments>)request.getAttribute("commentList");
-   		if(comments == null){ %><h1>No comments</h1><%}else{
-        //List<Comments> comments = (List<Comments>)request.getAttribute("commentList");
-        Iterator<Comments> iterator = comments.iterator();
+   		List<Reviews> reviews = (List<Reviews>)application.getAttribute("reviewList");
+   		if(reviews == null){ %><h1>No reviews</h1><%}else{
+        Iterator<Reviews> iterator = reviews.iterator();
 
         while (iterator.hasNext()) {
-        	Comments comment = (Comments)iterator.next();
-        	Long commentId = comment.getId();
-        	String commentContent = comment.getContent();
-        	String commentAuthor = comment.getNickname();
-        	Date commentDate = comment.getPosted_date();
-        	
-        	
-        
-        
+        	Reviews review = (Reviews)iterator.next();
+        	String reviewTitle = review.getReview_title();
+        	String bookTitle = review.getBook_title();
+
   %>
    <tr>
-    <th ><%= comment.getNickname()   %></th>
+   <td><%= reviewTitle%></td>
+    <td><%= bookTitle%></td>
 
    </tr>
-
-   <%
-          }}
-        
- 
-  %>
+   <% }}  %>
   </tbody>
-
  </table> 
-</body>
-</html>
+<jsp:include page="footer.jsp"></jsp:include> 

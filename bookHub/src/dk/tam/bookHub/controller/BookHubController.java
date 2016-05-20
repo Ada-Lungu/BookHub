@@ -17,7 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import dk.tam.bookHub.dao.CommentDAO;
 import dk.tam.bookHub.dao.CommentDAOImpl;
+import dk.tam.bookHub.dao.ReviewDAO;
+import dk.tam.bookHub.dao.ReviewDAOImpl;
 import dk.tam.bookHub.model.Comments;
+import dk.tam.bookHub.model.Reviews;
 
 /**
  * @author Martyna
@@ -36,11 +39,13 @@ public class BookHubController extends HttpServlet {
 	
 	public void init(ServletConfig config) throws ServletException {
 		  super.init(config);
-		  CommentDAO commentDAO = new CommentDAOImpl();
-		  List<Comments> commentList = commentDAO.getAllComments();
-		  System.out.println(commentList.toString());
-			ServletContext context = config.getServletContext();
-			context.setAttribute("commentList", commentList);
+		  ReviewDAO reviewDAO = new ReviewDAOImpl();
+		  List<Reviews> reviewList = reviewDAO.getAllReviews();	
+		  ServletContext context = config.getServletContext();
+			context.setAttribute("reviewList", reviewList);
+
+		  System.out.println(reviewList.toString());
+
 
 		 }
 	
@@ -68,23 +73,10 @@ public class BookHubController extends HttpServlet {
 						getAllComments(request, response);
 						url = base + "comments.jsp";
 						break;
-//					case "category":
-//						findAllBooks(request, response);
-//						url = base + "category.jsp?category=" + category;
-//						break;
-//					case "search":
-//						searchBooks(request, response, keyWord);
-//						url = base + "searchResult.jsp";
-//						break;
-//					case "contact":
-//						url = base + "contact.jsp";
-//						break;
-//					case "createBook":
-//						createBook(request, response);
-//						break;
-//					case "deleteBook":
-//						deleteBook(request, response);
-//						break;
+					case "allReviews":
+						getAllComments(request, response);
+						url = base + "reviews.jsp";
+						break;
 					}
 				}
 				RequestDispatcher requestDispatcher = getServletContext()
@@ -105,6 +97,17 @@ public class BookHubController extends HttpServlet {
 					System.out.println(e);
 				}
 			}
+//			private void getAllReviews(HttpServletRequest request,
+//					HttpServletResponse response) throws ServletException, IOException {
+//				try {
+//					ReviewDAO reviewDAO = new ReviewDAOImpl();
+//					List<Reviews> reviewList = reviewDAO.getAllReviews();					
+//					request.setAttribute("reviewList", reviewList);
+//				} catch (Exception e) {
+//					System.out.println(e);
+//				}
+//			}
+			
 
 
 }
