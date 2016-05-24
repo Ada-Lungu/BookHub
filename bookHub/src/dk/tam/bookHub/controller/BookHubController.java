@@ -2,6 +2,7 @@ package dk.tam.bookHub.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import dk.tam.bookHub.dao.AdminDAO;
+import dk.tam.bookHub.dao.AdminDAOImpl;
 import dk.tam.bookHub.dao.CommentDAO;
 import dk.tam.bookHub.dao.CommentDAOImpl;
 import dk.tam.bookHub.dao.ReviewDAO;
@@ -73,6 +76,10 @@ public class BookHubController extends HttpServlet {
 						uploadFileMethod(request, response);
 						url = base + "index.jsp";
 						break;
+					case "adminLogin":
+						System.out.println("admin logs in");
+						checkAdminCredentials(request, response);
+						url = base + "adminPanel.jsp";
 					}
 				}
 				RequestDispatcher requestDispatcher = getServletContext()
@@ -93,12 +100,14 @@ public class BookHubController extends HttpServlet {
 					System.out.println(e);
 				}
 			}
-			private static final String SAVE_DIR = "xxx";
+			private static final String SAVE_DIR = "images";
+			
 			
 			private void uploadFileMethod(HttpServletRequest request,
 					HttpServletResponse response) throws ServletException, IOException {
 				try {
 					String appPath = request.getServletContext().getRealPath("");
+//					URL appPath = request.getClass().getResource("");
 			        // constructs path of the directory to save uploaded file
 			        //String savePath = appPath + File.separator + SAVE_DIR;
 					String savePath = appPath + SAVE_DIR;
@@ -108,6 +117,12 @@ public class BookHubController extends HttpServlet {
 			        
 			        // creates the save directory if it does not exists
 			        File fileSaveDir = new File(savePath);
+			        
+			        
+			        ServletContext classLoader = null;
+					
+					
+					
 			        if (!fileSaveDir.exists()) {
 			            fileSaveDir.mkdir();
 			            System.out.println("makes file directory");
@@ -142,5 +157,36 @@ public class BookHubController extends HttpServlet {
 					}
 				}return "";
 				}
+			
+			private void checkAdminCredentials(HttpServletRequest request,
+					HttpServletResponse response) throws ServletException, IOException {
+				try {
+					
+					AdminDAO adminDAO = new AdminDAOImpl();
+					
+					
+					 String msg = "";
+					 String name = request.getParameter("name");
+					 String email = request.getParameter("email");
+					 String password = request.getParameter("password");
+					 if(email != null && password != null && email.length() > 0 && password.length() > 0){
+						 
+
+					  
+						 boolean isAdmin = adminDAO.validateUserLogin(email, password);
+					  
+
+					  if(isAdmin){
+						  request.setAttribute(msg, "Success, hello!");
+//					   request.getRequestDispatcher("success.jsp").forward(request, response);
+					  }else{
+						  request.setAttribute(msg, "Invalid username or password");
+					  }
+					 }
+					 
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
 }
 
