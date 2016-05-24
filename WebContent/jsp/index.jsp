@@ -75,5 +75,6 @@
  
  
  
+<jsp:include page="addAcomment.jsp"></jsp:include> 
  
 <jsp:include page="footer.jsp"></jsp:include> 

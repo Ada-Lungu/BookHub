@@ -79,7 +79,12 @@ public class BookHubController extends HttpServlet {
 					case "adminLogin":
 						System.out.println("admin logs in");
 						checkAdminCredentials(request, response);
-						url = base + "adminPanel.jsp";
+						if(request.getAttribute("message") == "success"){
+							url = base + "adminPanel.jsp";
+						}else{
+							url = base + "admin.jsp";
+						}
+						
 					}
 				}
 				RequestDispatcher requestDispatcher = getServletContext()
@@ -165,22 +170,22 @@ public class BookHubController extends HttpServlet {
 					AdminDAO adminDAO = new AdminDAOImpl();
 					
 					
-					 String msg = "";
-					 String name = request.getParameter("name");
+//					 String message = "jjjj";
+//					 String name = request.getParameter("name");
 					 String email = request.getParameter("email");
 					 String password = request.getParameter("password");
 					 if(email != null && password != null && email.length() > 0 && password.length() > 0){
-						 
 
-					  
 						 boolean isAdmin = adminDAO.validateUserLogin(email, password);
+//						 System.out.println(isAdmin);
 					  
-
 					  if(isAdmin){
-						  request.setAttribute(msg, "Success, hello!");
+						  request.setAttribute("message", "success");
+						  System.out.println(request.getAttribute("message"));
 //					   request.getRequestDispatcher("success.jsp").forward(request, response);
 					  }else{
-						  request.setAttribute(msg, "Invalid username or password");
+						  request.setAttribute("message", "Invalid username or password");
+						  System.out.println(request.getAttribute("message"));
 					  }
 					 }
 					 
