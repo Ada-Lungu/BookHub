@@ -1,10 +1,8 @@
 <%@page import="dk.tam.bookHub.model.Reviews"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Date"%>
-<%@page import="javax.print.attribute.standard.DateTimeAtCompleted"%>
 <%@page import="dk.tam.bookHub.model.Comments"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Date"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

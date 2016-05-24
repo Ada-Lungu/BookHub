@@ -3,11 +3,8 @@
  */
 package dk.tam.bookHub.model;
 
-
 import java.sql.Blob;
 import java.sql.Timestamp;
-import java.util.Date;
-
 
 /**
  * @author Martyna

@@ -1,8 +1,6 @@
 <%@page import="dk.tam.bookHub.model.Reviews"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.Date"%>
-<%@page import="dk.tam.bookHub.model.Comments"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Iterator"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <body>
@@ -28,6 +26,8 @@
    		List<Reviews> reviews = (List<Reviews>)application.getAttribute("reviewList");
    		if(reviews == null){ %><h1>No reviews</h1><%}else{
         Iterator<Reviews> iterator = reviews.iterator();
+        
+        
 
         while (iterator.hasNext()) {
         	Reviews review = (Reviews)iterator.next();
