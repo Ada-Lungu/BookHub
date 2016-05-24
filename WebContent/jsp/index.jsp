@@ -1,3 +1,5 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.sql.Blob"%>
 <%@page import="dk.tam.bookHub.model.Reviews"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
@@ -6,6 +8,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <body>
+<%
+	String urlPrefix = application.getInitParameter("urlPrefix");
+%>
 <jsp:include page="header.jsp"></jsp:include> 
 
 <h1>INDEX page</h1>
@@ -33,14 +38,42 @@
         	Reviews review = (Reviews)iterator.next();
         	String reviewTitle = review.getReview_title();
         	String bookTitle = review.getBook_title();
+        	String bookAuthor = review.getBook_author();
+        	String bookPublisher = review.getBook_publisher();
+        	Blob bookPicture = review.getBook_picture();
+        	String reviewContetnt = review.getReview_content();
+        	Timestamp reviewDate = review.getReview_date();
 
   %>
    <tr>
    <td><%= reviewTitle%></td>
     <td><%= bookTitle%></td>
+    <td><%= bookAuthor%></td>
+    <td><%= bookPublisher%></td>
+    <td><%= bookPicture%></td>
+    <td><%= reviewContetnt%></td>
+    <td><%= reviewDate%></td>
 
    </tr>
    <% }}  %>
   </tbody>
  </table> 
+ 
+<h1>File Upload</h1>
+ <form method="post" action="<%=urlPrefix%>?action=uploadImage"
+     enctype="multipart/form-data">
+     Select file to upload: <input type="file" name="file" size="60" /><br />
+     <br /> <input type="submit" value="Upload" />
+ </form>
+ 
+<% String message = request.getParameter("message"); 
+ if(message == null){ %><h1>No message at all</h1><%}else{
+  %><%= message%><%
+ }
+ %>
+
+ 
+ 
+ 
+ 
 <jsp:include page="footer.jsp"></jsp:include> 
