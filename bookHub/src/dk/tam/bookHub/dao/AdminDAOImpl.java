@@ -7,14 +7,12 @@ package dk.tam.bookHub.dao;
  * @author Martyna
  *
  */
-public class UserDAOImpl extends DbConnectionDAO implements UserDAO {
+public class AdminDAOImpl extends DbConnectionDAO implements AdminDAO {
 	
-	
-
 	/**
 	 * 
 	 */
-	public UserDAOImpl() {
+	public AdminDAOImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
