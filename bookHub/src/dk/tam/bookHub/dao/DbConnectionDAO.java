@@ -14,7 +14,11 @@ import java.sql.SQLException;
 public class DbConnectionDAO {
 	
 	private static final String DB_USERNAME = "root";
+<<<<<<< HEAD
 	private static final String DB_PASSWORD = "";
+=======
+	private static final String DB_PASSWORD = "Malina33";
+>>>>>>> refs/remotes/origin/HEAD
 	
 	 static {
 	  try {

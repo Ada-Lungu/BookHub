@@ -8,6 +8,6 @@ package dk.tam.bookHub.dao;
  *
  */
 public interface AdminDAO {
-	
+	public boolean validateUserLogin(String email, String pwd);
 
 }
