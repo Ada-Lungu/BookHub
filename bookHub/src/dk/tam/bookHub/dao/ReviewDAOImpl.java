@@ -24,7 +24,6 @@ public class ReviewDAOImpl extends DbConnectionDAO implements ReviewDAO{
 		
 		List<Reviews> reviewList = new ArrayList<Reviews>();
 		
-
 		  String sql = "select * from reviews";
 
 		  Connection connection = null;
@@ -51,6 +50,35 @@ public class ReviewDAOImpl extends DbConnectionDAO implements ReviewDAO{
 		  }
 		  return reviewList;
 		 }
+	
+	
+	public List<Reviews> getReviewWithID(Long id) {
+		
+//		List<Reviews> reviewList = new ArrayList<Reviews>();
+		
+//		get id 
+		  String sql = "select * from reviews where id=";
+
+		  Connection connection = null;
+		  try {
+		   connection = getConnection();
+		   PreparedStatement statement = connection.prepareStatement(sql);
+		   ResultSet resultSet = statement.executeQuery();
+		   while (resultSet.next()) {
+	    
+		   }
+		  } catch (SQLException ex) {
+		   ex.printStackTrace();
+		  } finally {
+		   closeConnection(connection);
+		  }
+		  return reviewList;
+		
+		
+		
+	}
+	
+	
 
 	/**
 	 * 

@@ -84,7 +84,15 @@ public class BookHubController extends HttpServlet {
 						}else{
 							url = base + "admin.jsp";
 						}
-						
+					case "submitComment":
+						System.out.println("inside submitComment case");
+						submitComment(request, response);
+						url = base + "review.jsp";
+						break;
+					case "getReviewInfos":
+						getReviewInfos(request, response);
+						url = base + "review.jsp";
+						break;
 					}
 				}
 				RequestDispatcher requestDispatcher = getServletContext()
@@ -122,11 +130,8 @@ public class BookHubController extends HttpServlet {
 			        
 			        // creates the save directory if it does not exists
 			        File fileSaveDir = new File(savePath);
-			        
-			        
+			       
 			        ServletContext classLoader = null;
-					
-					
 					
 			        if (!fileSaveDir.exists()) {
 			            fileSaveDir.mkdir();
@@ -193,5 +198,40 @@ public class BookHubController extends HttpServlet {
 					System.out.println(e);
 				}
 			}
+			
+			private void submitComment(HttpServletRequest request,
+					HttpServletResponse response) throws ServletException, IOException {
+				
+				try {
+					String user_name = request.getParameter("name");
+					String comment = request.getParameter("comment");
+					
+					CommentDAO commentDAO = new CommentDAOImpl();
+					commentDAO.submitComment(user_name, comment);
+					
+					request.setAttribute("last_comment", comment);
+					request.setAttribute("name_last_comment", user_name);
+					
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+			
+			private void getReviewInfos(HttpServletRequest request,
+					HttpServletResponse response) throws ServletException, IOException {
+				
+				try {
+					ReviewDAO reviewDAO = new ReviewDAOImpl();
+					List<Reviews> reviewData = reviewDAO.getReviewWithID(id);
+					
+					request.setAttribute("reviewData", reviewData);
+					
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+				
+				
+			
 }
 

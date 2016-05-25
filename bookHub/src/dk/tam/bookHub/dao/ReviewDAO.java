@@ -12,5 +12,9 @@ import dk.tam.bookHub.model.Reviews;
  *
  */
 public interface ReviewDAO {
+	
 		public List<Reviews> getAllReviews();
+		
+		public List<Reviews> getReviewWithID(Long id);
+		
 }

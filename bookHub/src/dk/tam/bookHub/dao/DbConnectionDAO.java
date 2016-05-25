@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class DbConnectionDAO {
 	
 	private static final String DB_USERNAME = "root";
-	private static final String DB_PASSWORD = "Malina33";
+	private static final String DB_PASSWORD = "";
 	
 	 static {
 	  try {

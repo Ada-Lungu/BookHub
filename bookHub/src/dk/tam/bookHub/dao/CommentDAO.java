@@ -12,5 +12,9 @@ import dk.tam.bookHub.model.Comments;
  *
  */
 public interface CommentDAO {
+	
 	public List<Comments> getAllComments();
+	
+	public void submitComment(String user_name, String comment);
+	
 }

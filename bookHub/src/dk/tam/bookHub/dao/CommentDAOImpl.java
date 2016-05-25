@@ -17,6 +17,8 @@ import dk.tam.bookHub.model.Comments;
  *
  */
 public class CommentDAOImpl extends DbConnectionDAO implements CommentDAO {
+	
+	Connection connection = null;
 
 	public List<Comments> getAllComments() {
 		
@@ -24,7 +26,6 @@ public class CommentDAOImpl extends DbConnectionDAO implements CommentDAO {
 
 		  String sql = "select * from comments";
 		  int i = 0; 
-		  Connection connection = null;
 		  try {
 		   connection = getConnection();
 		   PreparedStatement statement = connection.prepareStatement(sql);
@@ -49,6 +50,31 @@ public class CommentDAOImpl extends DbConnectionDAO implements CommentDAO {
 		  }
 		  return commentsList;
 		 }
+	
+	
+	public void submitComment(String user_name, String comment) {
+		
+		String sql = "INSERT INTO comments (nickname, content) VALUES(user_name, comment)";
+		  try {
+			   connection = getConnection();
+			   PreparedStatement statement = connection.prepareStatement(sql);
+			   System.out.println(statement.toString());
+			   ResultSet resultSet = statement.executeQuery();
+			   System.out.println("comment inserted into DB");
+			   
+			  } catch (SQLException ex) {
+			   ex.printStackTrace();
+			   System.out.println("comment failed to be inserted into DB");
+			  } finally {
+			   closeConnection(connection);
+			   System.out.println();
+			  }
+//			  return "";
+	 }
+		
+		
+
+	
 
 	/**
 	 * 
