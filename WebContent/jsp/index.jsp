@@ -31,7 +31,9 @@
   <tbody>
    <%
    		List<Reviews> reviews = (List<Reviews>)application.getAttribute("reviewList");
-   		if(reviews == null){ %><h1>No reviews</h1><%}else{
+   		if(reviews == null){ %>
+   		<h1>No reviews</h1>
+   		<%}else{
         Iterator<Reviews> iterator = reviews.iterator();
 
         while (iterator.hasNext()) {
